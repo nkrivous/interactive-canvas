@@ -1,0 +1,34 @@
+:root {
+  --base: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  line-height: 1.15;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: azure;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.canvas-wrapper {
+  margin: calc(var(--base) * 2);
+}
+
+#canvas {
+  background-color: bisque;
+}
