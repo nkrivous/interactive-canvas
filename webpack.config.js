@@ -43,6 +43,7 @@ module.exports = () => {
   } else {
     config.mode = "development";
     config.output.path = path.resolve(__dirname, "dist");
+    config.devtool = "inline-source-map";
   }
   return config;
 };

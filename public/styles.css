@@ -22,11 +22,15 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: 1fr 3fr;
 }
 
 .canvas-wrapper {
   margin: calc(var(--base) * 2);
+}
+
+#info {
+  position: fixed;
+  right: 0;
 }
 
 #canvas {

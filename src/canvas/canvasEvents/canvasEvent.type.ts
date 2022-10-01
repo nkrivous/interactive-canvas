@@ -1,4 +1,5 @@
 import { Point } from "../../types";
+import { Shape } from "../shapes/shape";
 
 export type CanvasEventMap = {
   click: CanvasClickEvent;
@@ -7,6 +8,7 @@ export type CanvasEventMap = {
 
 export type CanvasClickEvent = {
   point: Point;
+  selectedShape?: Shape;
 };
 
 export type CanvasMouseMoveEvent = {
@@ -20,4 +22,9 @@ export type CanvasEventListenerFn<K extends keyof CanvasEventMap> = {
 export type CanvasEventListener<K extends keyof CanvasEventMap> = {
   type: K;
   listener(event: CanvasEventMap[K]): void;
+};
+
+export type SelectedShape = {
+  shape: Shape;
+  dragOffset: Point;
 };
