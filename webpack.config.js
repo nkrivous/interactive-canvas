@@ -1,11 +1,12 @@
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const isProduction = process.env.NODE_ENV === "production";
 
 const config = {
   entry: "./src/index.ts",
   output: {
-    publicPath: "/dist",
     filename: "main.js",
+    path: path.resolve(__dirname, "build"),
   },
   devServer: {
     open: true,
@@ -34,15 +35,18 @@ const config = {
   resolve: {
     extensions: [".ts", ".js"],
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "public", to: "." }],
+    }),
+  ],
 };
 
 module.exports = () => {
   if (isProduction) {
     config.mode = "production";
-    config.output.path = path.resolve(__dirname, "public");
   } else {
     config.mode = "development";
-    config.output.path = path.resolve(__dirname, "dist");
     config.devtool = "inline-source-map";
   }
   return config;
